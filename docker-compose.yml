@@ -28,9 +28,12 @@ services:
       - todo-network
     environment:
       MongoDB__ConnectionString: "mongodb://admin:admin123@mongodb:27017/TodoList?authSource=admin"
+      ASPNETCORE_URLS: "http://+:5002"
     depends_on:
       mongodb:
         condition: service_healthy
+    ports:
+      - "5002:5002"
     restart: "no"
 
   webapi:
