@@ -47,7 +47,6 @@ The application will be available at:
 
 #### Swagger Documentation
 - **HTTP**: http://localhost:5000/swagger
-- **HTTPS**: https://localhost:5001/swagger
 
 You can test the endpoints using:
 - Swagger UI
@@ -65,7 +64,7 @@ docker-compose down
 ## 🔧 Troubleshooting
 
 ### Port Conflicts
-If ports 5000, 5001, or 27017 are already in use:
+If ports 5000, or 27017 are already in use:
 1. Open `docker-compose.yml`
 2. Modify the port mappings as needed
 3. Restart the containers
