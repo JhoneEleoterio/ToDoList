@@ -4,10 +4,10 @@ namespace WebAPI.Services
 {
     public interface ITodoService
     {
-        IEnumerable<TodoItem> GetAll();
-        TodoItem? GetById(Guid id);
-        void Add(TodoItem toDoItem);
-        bool Delete(Guid id);
-        bool MarkComplete(Guid id);
+        Task<IEnumerable<TodoItem>> GetAllAsync();
+        Task<TodoItem?> GetByIdAsync(Guid id);
+        Task<Guid> AddAsync(TodoItem toDoItem);
+        Task<Guid> DeleteAsync(Guid id);
+        Task<bool> MarkCompleteAsync(Guid id);
     }
 }

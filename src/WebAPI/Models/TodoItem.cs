@@ -16,6 +16,7 @@ namespace WebAPI.Models
 
         public void MarkComplete()
         {
+            UpdateAt = DateTime.Now;
             IsComplete = true;
         }
     }

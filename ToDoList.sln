@@ -11,12 +11,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{87547BF4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI.Tests", "tests\WebAPI.Tests\WebAPI.Tests.csproj", "{DDECF155-599D-48B8-BFB1-16C593A0B1D1}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{1323AF8F-656F-4193-8AA1-951823F7DD09}"
-	ProjectSection(SolutionItems) = preProject
-		SolutionItems\.gitignore = SolutionItems\.gitignore
-		SolutionItems\docker-compose.yml = SolutionItems\docker-compose.yml
-		SolutionItems\DockerFile = SolutionItems\DockerFile
-	EndProjectSection
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{98C8DAE7-6A05-4ACD-A887-813233122666}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +27,10 @@ Global
 		{DDECF155-599D-48B8-BFB1-16C593A0B1D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDECF155-599D-48B8-BFB1-16C593A0B1D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDECF155-599D-48B8-BFB1-16C593A0B1D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98C8DAE7-6A05-4ACD-A887-813233122666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98C8DAE7-6A05-4ACD-A887-813233122666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98C8DAE7-6A05-4ACD-A887-813233122666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98C8DAE7-6A05-4ACD-A887-813233122666}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

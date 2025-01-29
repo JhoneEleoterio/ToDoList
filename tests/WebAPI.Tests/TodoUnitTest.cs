@@ -1,52 +1,69 @@
+using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
 using WebAPI.Models;
 using WebAPI.Services;
 
-public class TodoUnitTest
+public class TodoServiceTests
 {
+    private readonly TodoListContext _context; // Apenas para injeção
+    private readonly TodoService _service;
+
+    public TodoServiceTests()
+    {
+        var options = new DbContextOptionsBuilder<TodoListContext>()
+            .UseMongoDB("mongodb://admin:admin123@localhost:27017/TodoListTestDB?authSource=admin", "TodoListTestDB")
+            .Options;
+
+        _context = new TodoListContext(options);
+        _service = new TodoService(_context);
+
+        // Limpa o banco antes de cada teste para evitar interferência
+        _context.Database.EnsureDeleted();
+        _context.Database.EnsureCreated();
+    }
+
     [Fact]
-    public void Add_ShouldAddNewItem()
+    public async Task Add_ShouldAddNewItem()
     {
         // Arrange
-        var service = new TodoService();
         var toDoItem = new TodoItem(title: "Task 01");
 
         // Act
-        service.Add(toDoItem);
+        await _service.AddAsync(toDoItem);
 
         // Assert
-        var items = service.GetAll();
+        var items = await _service.GetAllAsync();
         Assert.Contains(items, item => item.Title == "Task 01");
     }
 
     [Fact]
-    public void MarkComplete_ShouldMarkItemAsComplete()
+    public async Task MarkComplete_ShouldMarkItemAsComplete()
     {
         // Arrange
-        var service = new TodoService();
         var toDoItem = new TodoItem(title: "Task 02");
-        service.Add(toDoItem);
+        await _service.AddAsync(toDoItem);
 
         // Act
-        service.MarkComplete(toDoItem.Id);
+        await _service.MarkCompleteAsync(toDoItem.Id);
 
         // Assert
-        var item = service.GetById(toDoItem.Id);
+        var item = await _service.GetByIdAsync(toDoItem.Id);
         Assert.True(item?.IsComplete);
     }
 
     [Fact]
-    public void Delete_ShouldRemoveItem()
+    public async Task Delete_ShouldRemoveItem()
     {
         // Arrange
-        var service = new TodoService();
-        var toDoItem = new TodoItem(title: "Task 02");
-        service.Add(toDoItem);
+        var toDoItem = new TodoItem(title: "Task 03");
+        await _service.AddAsync(toDoItem);
 
         // Act
-        var result = service.Delete(toDoItem.Id);
+        var result = await _service.DeleteAsync(toDoItem.Id);
 
         // Assert
-        Assert.True(result);
-        Assert.DoesNotContain(service.GetAll(), item => item.Id == toDoItem.Id);
+        Assert.True(result != Guid.Empty);
+        var items = await _service.GetAllAsync();
+        Assert.DoesNotContain(items, item => item.Id == toDoItem.Id);
     }
 }

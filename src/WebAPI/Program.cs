@@ -1,4 +1,5 @@
-using WebAPI.Models;
+using WebAPI.Endpoints;
+using WebAPI.Extensions;
 using WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<ITodoService, TodoService>();
 #endregion
 
+builder.Services.AddDatabaseService(builder.Configuration);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -22,27 +24,7 @@ if (app.Environment.IsDevelopment())
 }
 app.UseHttpsRedirection();
 
-app.MapGet("/todos", (ITodoService toDoService) => Results.Ok(toDoService.GetAll()));
-
-app.MapPost("/todos", (ITodoService toDoService, TodoItem toDoItem) =>
-{
-    toDoService.Add(toDoItem);
-    return Results.Created($"/todos/{toDoItem.Id}", toDoItem);
-});
-
-app.MapPut("/todos/{id:guid}/complete", (ITodoService toDoService, Guid id) =>
-{
-    if (toDoService.MarkComplete(id))
-        return Results.NoContent();
-    return Results.NotFound();
-});
-
-app.MapDelete("/todos/{id:guid}", (ITodoService toDoService, Guid id) =>
-{
-    if (toDoService.Delete(id))
-        return Results.NoContent();
-    return Results.NotFound();
-});
+app.MapTodoEndpoints();
 
 app.Run();
 

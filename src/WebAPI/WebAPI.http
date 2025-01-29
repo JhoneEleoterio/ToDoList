@@ -1,6 +1,23 @@
-@WebAPI_HostAddress = http://localhost:5007
+@WebAPI_HostAddress = https://localhost:7297
 
-GET {{WebAPI_HostAddress}}/weatherforecast/
+### Listar todos os itens
+GET {{WebAPI_HostAddress}}/todos
 Accept: application/json
 
-###
+### Adicionar um novo item
+POST {{WebAPI_HostAddress}}/todos
+Content-Type: application/json
+Accept: application/json
+
+{
+  "title": "task4"
+}
+
+### Marcar um item como concluído
+PUT {{WebAPI_HostAddress}}/todos/{{id}}/complete
+Content-Type: application/json
+Accept: application/json
+
+### Excluir um item
+DELETE {{WebAPI_HostAddress}}/todos/{{id}}
+Accept: application/json

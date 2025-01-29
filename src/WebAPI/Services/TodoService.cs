@@ -1,39 +1,50 @@
-﻿using WebAPI.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using WebAPI.Data;
+using WebAPI.Models;
 
 namespace WebAPI.Services
 {
-    public class TodoService: ITodoService
+    public class TodoService(TodoListContext context) : ITodoService
     {
-        private readonly List<TodoItem> _todoItems = new();
+        private readonly TodoListContext _context = context;
 
-        public IEnumerable<TodoItem> GetAll()
-        => _todoItems;
+        public async Task<IEnumerable<TodoItem>> GetAllAsync()
+        => await _context.TodoItems.OrderByDescending(order => order.CreatedAt).ToListAsync();
 
-        public TodoItem? GetById(Guid id)
-        => _todoItems.FirstOrDefault(x => x.Id == id);  
+        public async Task<TodoItem?> GetByIdAsync(Guid id)
+            => await _context.TodoItems.FirstOrDefaultAsync(x => x.Id == id);
 
-        public void Add(TodoItem todoItem)
+        public async Task<Guid> AddAsync(TodoItem todoItem)
         {
-            _todoItems.Add(todoItem);   
+            await _context.TodoItems.AddAsync(todoItem);
+            await _context.SaveChangesAsync();
+
+            return todoItem.Id;
         }
 
-        public bool Delete(Guid id)
+        public async Task<Guid> DeleteAsync(Guid id)
         {
-            var item = _todoItems.FirstOrDefault(x => x.Id == id);
+            var todoItem = await _context.TodoItems.FirstOrDefaultAsync(x => x.Id == id);
             
-            if (item == null) return false;
+            if (todoItem is null) return Guid.Empty;
 
-            _todoItems.Remove(item);
+            _context.TodoItems.Remove(todoItem);
+            await _context.SaveChangesAsync();
 
-            return true;
+            return todoItem.Id;
         }
 
-        public bool MarkComplete(Guid id)
+        public async Task<bool> MarkCompleteAsync(Guid id)
         {
-            var item = _todoItems.FirstOrDefault(x => x.Id == id);
-            if (item == null) return false;
-
+            var item = await _context.TodoItems.FirstOrDefaultAsync(x => x.Id == id);
+            
+            if (item is null) return false;
+            
             item.MarkComplete();
+
+            _context.TodoItems.Update(item);
+            await _context.SaveChangesAsync();
+
             return item.IsComplete;
         }
     }
