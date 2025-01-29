@@ -1,69 +1,92 @@
 # ToDoList
 
-Projeto ToDoList com Docker
-Este projeto consiste em uma aplicação WebAPI que utiliza um banco de dados MongoDB para gerenciar tarefas. O ambiente é configurado e executado usando Docker Compose.
+## 📋 About
+A ToDoList WebAPI project using Docker and MongoDB. This application provides a containerized environment for managing tasks through a REST API.
 
-Pré-requisitos
-Antes de começar, certifique-se de que você tem o seguinte instalado em sua máquina:
+## 🚀 Technologies
+- .NET WebAPI
+- MongoDB
+- Docker
+- Docker Compose
 
-Docker: Instale o Docker
-Docker Compose: Instale o Docker Compose
+## ⚙️ Prerequisites
+Make sure you have the following installed:
+- [Docker](https://www.docker.com/get-started)
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-Estrutura do Projeto
-O projeto é composto por dois serviços:
+## 🏗️ Project Structure
+The project consists of two main services:
+- **WebAPI**: .NET application exposing REST endpoints
+- **MongoDB**: Database for data persistence
 
-WebAPI: Aplicação .NET que expõe endpoints REST.
-MongoDB: Banco de dados MongoDB para armazenamento de dados.
+## 🛠️ Setup and Installation
 
-Como Executar o Projeto
-Siga os passos abaixo para configurar e executar o projeto:
-
-1. Clone o Repositório
-Clone o repositório do projeto para sua máquina local:
+### 1. Clone the Repository
+```bash
 git clone https://github.com/JhoneEleoterio/ToDoList.git
 cd ToDoList
+```
 
-3. Execute o Docker Compose
-No diretório raiz do projeto, execute o seguinte comando para iniciar os containers:
+### 2. Start the Application
+Run the following command in the project root directory:
+```bash
 docker-compose up -d
+```
 
-Isso fará o seguinte:
-  Construirá a imagem da WebAPI com base no Dockerfile.
-  Iniciará o container do MongoDB.
-  Iniciará o container da WebAPI.
+This command will:
+- Build the WebAPI image using the Dockerfile
+- Start the MongoDB container
+- Start the WebAPI container
 
-3. Valide o Deploy
-Após os containers serem iniciados, você pode validar se a aplicação está funcionando corretamente.
+### 3. Access the Application
+The application will be available at:
 
-Acesse a API:
-HTTP: http://localhost:5000
-HTTPS: https://localhost:5001
+- **HTTP**: http://localhost:5000
+- **HTTPS**: https://localhost:5001
 
-*Url com swagger*: 
-HTTP: http://localhost:5000/swagger
-HTTPS: https://localhost:5001/swagger
+#### Swagger Documentation
+- **HTTP**: http://localhost:5000/swagger
+- **HTTPS**: https://localhost:5001/swagger
 
-Teste os Endpoints: 
-Na aplicação foi disponibilizado o swagger, mas você pode utilizar outras opções como: Postman ou Insomnia
+You can test the endpoints using:
+- Swagger UI
+- Postman
+- Insomnia
 
-4. Parar e Remover os Containers
-Para parar e remover os containers, execute:
+### 4. Stop the Application
+To stop and remove the containers:
+```bash
 docker-compose down
+```
 
-Isso removerá os containers, mas manterá o volume do MongoDB (mongo_data) para persistência dos dados.
+*Note: This will preserve the MongoDB volume (mongo_data) for data persistence.*
 
-Solução de Problemas
-1. Portas já em uso
-Se as portas 5000, 5001 ou 27017 já estiverem em uso, altere as configurações de portas no docker-compose.yml.
+## 🔧 Troubleshooting
 
-Contribuindo
-Se você deseja contribuir para este projeto, siga estas etapas:
+### Port Conflicts
+If ports 5000, 5001, or 27017 are already in use:
+1. Open `docker-compose.yml`
+2. Modify the port mappings as needed
+3. Restart the containers
 
-Faça um fork do repositório.
-Crie uma branch para sua feature (git checkout -b feature/nova-feature).
-Commit suas alterações (git commit -m 'Adicionando nova feature').
-Push para a branch (git push origin feature/nova-feature).
-Abra um Pull Request.
+## 👥 Contributing
+1. Fork the repository
+2. Create a feature branch
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes
+   ```bash
+   git commit -m 'Add some feature'
+   ```
+4. Push to the branch
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a Pull Request
 
-Licença
-Este projeto está licenciado sob a licença MIT. Consulte o arquivo LICENSE para mais detalhes.
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 📞 Support
+If you encounter any issues or have questions, please open an issue in the GitHub repository.
