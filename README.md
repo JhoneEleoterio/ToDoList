@@ -9,14 +9,16 @@ A ToDoList WebAPI project using Docker and MongoDB. This application provides a 
 - Docker
 - Docker Compose
 
+
 ## ⚙️ Prerequisites
 Make sure you have the following installed:
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## 🏗️ Project Structure
-The project consists of two main services:
-- **WebAPI**: .NET application exposing REST endpoints
+The project consists of three main services:
+- **src/WebAPI**: .NET application exposing REST endpoints
+- **tests/WebAPI.tests**: NET applicaion tests for services
 - **MongoDB**: Database for data persistence
 
 ## 🛠️ Setup and Installation
@@ -30,13 +32,13 @@ cd ToDoList
 ### 2. Start the Application
 Run the following command in the project root directory:
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 This command will:
-- Build the WebAPI image using the Dockerfile
-- Build the Tests image using the Dockerfile
 - Start the MongoDB container
+- Build the Tests image using the Dockerfile
+- Build the WebAPI image using the Dockerfile
 - Start the WebAPI container
 
 ### 3. Access the Application
@@ -55,7 +57,7 @@ You can test the endpoints using:
 ### 4. Stop the Application
 To stop and remove the containers:
 ```bash
-docker-compose down
+docker compose down
 ```
 
 *Note: This will preserve the MongoDB volume (mongo_data) for data persistence.*
