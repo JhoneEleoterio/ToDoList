@@ -45,7 +45,7 @@ The application will be available at:
 - **HTTP**: http://localhost:5050
 
 #### Swagger Documentation
-- **HTTP**: http://localhost:5000/swagger
+- **HTTP**: http://localhost:5050/swagger
 
 You can test the endpoints using:
 - Swagger UI
