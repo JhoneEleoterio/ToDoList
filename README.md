@@ -35,6 +35,7 @@ docker-compose up -d
 
 This command will:
 - Build the WebAPI image using the Dockerfile
+- Build the Tests image using the Dockerfile
 - Start the MongoDB container
 - Start the WebAPI container
 
