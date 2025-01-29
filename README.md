@@ -57,7 +57,7 @@ You can test the endpoints using:
 ### 4. Stop the Application
 To stop and remove the containers:
 ```bash
-docker-compose down -v
+docker-compose down
 ```
 
 *Note: This will preserve the MongoDB volume (mongo_data) for data persistence.*
