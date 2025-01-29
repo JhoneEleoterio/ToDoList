@@ -30,7 +30,7 @@ cd ToDoList
 ### 2. Start the Application
 Run the following command in the project root directory:
 ```bash
-docker-compose up -d
+docker-compose up --build
 ```
 
 This command will:
@@ -57,7 +57,7 @@ You can test the endpoints using:
 ### 4. Stop the Application
 To stop and remove the containers:
 ```bash
-docker-compose down
+docker-compose down -v
 ```
 
 *Note: This will preserve the MongoDB volume (mongo_data) for data persistence.*
