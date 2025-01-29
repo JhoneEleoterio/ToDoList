@@ -42,8 +42,7 @@ This command will:
 ### 3. Access the Application
 The application will be available at:
 
-- **HTTP**: http://localhost:5000
-- **HTTPS**: https://localhost:5001
+- **HTTP**: http://localhost:5050
 
 #### Swagger Documentation
 - **HTTP**: http://localhost:5000/swagger
