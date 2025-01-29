@@ -12,7 +12,7 @@ namespace WebAPI.Models
             IsComplete = false;
         }
 
-        public TodoItem(string title) : this()  => Title = title;
+        public TodoItem(string title) : this()  => Title = title.Trim();
 
         public void MarkComplete()
         {

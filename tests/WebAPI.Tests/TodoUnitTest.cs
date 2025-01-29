@@ -10,8 +10,10 @@ public class TodoServiceTests
 
     public TodoServiceTests()
     {
+        // Para testes locais executando a aplicacao verifique o arquivo appSettings.json
+
         var options = new DbContextOptionsBuilder<TodoListContext>()
-            .UseMongoDB("mongodb://admin:admin123@localhost:27017/TodoListTestDB?authSource=admin", "TodoListTestDB")
+            .UseMongoDB("mongodb://admin:admin123@mongodb:27017/TodoListTestDB?authSource=admin", "TodoListTestDB")
             .Options;
 
         _context = new TodoListContext(options);

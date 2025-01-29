@@ -1,11 +1,11 @@
 @WebAPI_HostAddress = https://localhost:7297
 
 ### Listar todos os itens
-GET {{WebAPI_HostAddress}}/todos
+GET {{WebAPI_HostAddress}}/api/todos
 Accept: application/json
 
 ### Adicionar um novo item
-POST {{WebAPI_HostAddress}}/todos
+POST {{WebAPI_HostAddress}}/api/todos
 Content-Type: application/json
 Accept: application/json
 
@@ -14,10 +14,10 @@ Accept: application/json
 }
 
 ### Marcar um item como concluído
-PUT {{WebAPI_HostAddress}}/todos/{{id}}/complete
+PUT {{WebAPI_HostAddress}}/api/todos/{{id}}/complete
 Content-Type: application/json
 Accept: application/json
 
 ### Excluir um item
-DELETE {{WebAPI_HostAddress}}/todos/{{id}}
+DELETE {{WebAPI_HostAddress}}/api/todos/{{id}}
 Accept: application/json

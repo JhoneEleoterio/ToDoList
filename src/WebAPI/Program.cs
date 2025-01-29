@@ -1,18 +1,15 @@
 using WebAPI.Endpoints;
 using WebAPI.Extensions;
-using WebAPI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-#region AddServices
-builder.Services.AddScoped<ITodoService, TodoService>();
-#endregion
 
 builder.Services.AddDatabaseService(builder.Configuration);
+builder.Services.AddRepositoryService();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerConfig();
 
 var app = builder.Build();
 
