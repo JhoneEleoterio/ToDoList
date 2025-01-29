@@ -44,7 +44,7 @@ services:
     networks:
       - todo-network
     environment:
-      ASPNETCORE_URLS: "http://0.0.0.0:5050"
+      ASPNETCORE_URLS: "http://+:5050"
       ASPNETCORE_ENVIRONMENT: "Development"
       MongoDB__ConnectionString: "mongodb://admin:admin123@mongodb:27017/TodoList?authSource=admin"
     depends_on:
